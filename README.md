@@ -159,14 +159,7 @@ input{
         <button class="menu-btn" onclick="connectTG()" style="width:150px; margin-top:5px;">Підключити</button>
     </div>
 
-    <!-- Промокоди -->
-    <h3 class="neon-text">ПРОМОКОД 📩</h3>
-    <div>
-        <input type="text" id="promo-input" placeholder="Введіть промокод" style="padding:5px; border-radius:5px; border:none; text-align:center;">
-        <button class="menu-btn" onclick="redeemPromo()" style="width:150px; margin-top:5px;">Активувати</button>
-    </div>
-
-    <!-- Статистика -->
+    <!-- Нова статистика -->
     <h3 class="neon-text">СТАТИСТИКА 📊</h3>
     <div class="neon-text">
         Кількість покупок: <span id="total-buys">0</span><br>
@@ -186,13 +179,6 @@ let tgUsername = "";
 let totalBuys = 0;
 let coinsSpent = 0;
 let autoclickerInterval = null;
-
-const promoCodes = {
-    "CHICKENCLICK": 1000,
-    "ZCY11K": 800,
-    "UPDATE": 300,
-    "CHICKEN": 10000
-};
 
 /* SAVE */
 function save(){
@@ -333,22 +319,6 @@ function connectTG(){
  document.getElementById("tg-connect").style.display = "none";
  input.value = "";
  alert("✅ Telegram підключено: " + tgUsername);
-}
-
-/* PROMO CODES */
-function redeemPromo(){
-    const input = document.getElementById("promo-input");
-    const code = input.value.trim().toUpperCase();
-    if(code === "") return alert("Введіть промокод!");
-    if(promoCodes[code]){
-        coins += promoCodes[code];
-        update(); save();
-        alert(🎉 Промокод активовано! +${promoCodes[code]} 🪙);
-        delete promoCodes[code];
-        input.value = "";
-    } else {
-        alert("❌ Невірний промокод або вже використано!");
-    }
 }
 
 /* RESET GAME */
